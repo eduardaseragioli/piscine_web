@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Piscine Web</title>
+
+        <style>
+            body{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 0;
+                padding-top: 240px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+            }
+
+            #new_btn{
+                padding: 15px 40px;
+                font-size: medium;
+                border-radius: 50px;
+                border: 2px solid #333;
+                background-color: peachpuff;
+                cursor: pointer;
+                transition: background 0.3s;
+                margin-bottom: 30px; 
+            }
+
+            #new_btn:hover{
+                background-color: bisque;
+            }
+
+            #ft_list{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #ft_list div{
+                width: 100%;
+                padding: 15px;
+                margin-bottom: 10px;
+                background-color: #fafafa;
+                border: 1px solid black;
+                border-radius: 10px;
+                text-align: center;
+                cursor: pointer;
+
+            }
+        </style>
+    </head>
+
+    <body>
+        <button id = "new_btn">New</button>
+        <div id = "ft_list"></div>
+        <script src = "todo.js"></script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+*{
+   margin:0;
+   padding:0;
+}
+
+.image1 {
+    background-image: url("torredia.png");
+
+    min-height: 100vw;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.image2 {
+    background-image: url("torrenoite.png");
+
+    min-height: 100vw;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+p{
+    text-align: center;
+    color: #777;
+    background-color:black;
+    text-align:center;
+    padding:10px 10px;
+}
+h1{
+    text-align: center;
+}

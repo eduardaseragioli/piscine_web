@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>ex01bis - O Balão jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        .balloon {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: width 0.1s, height 0.1s, background-color 0.2s;
+        }
+        .red { background-color: red; }
+        .green { background-color: green; }
+        .blue { background-color: blue; }
+    </style>
+</head>
+<body>
+
+    <div class="balloon red" id="balloon"></div>
+
+    <script>
+        $(document).ready(function() {
+            const $balloon = $("#balloon");
+
+            // Função para avançar a cor (R -> G -> B)
+            function nextColor() {
+                if ($balloon.hasClass("red")) {
+                    $balloon.removeClass("red").addClass("green");
+                } else if ($balloon.hasClass("green")) {
+                    $balloon.removeClass("green").addClass("blue");
+                } else {
+                    $balloon.removeClass("blue").addClass("red");
+                }
+            }
+
+            // Função para retroceder a cor (R -> B -> G)
+            function prevColor() {
+                if ($balloon.hasClass("red")) {
+                    $balloon.removeClass("red").addClass("blue");
+                } else if ($balloon.hasClass("blue")) {
+                    $balloon.removeClass("blue").addClass("green");
+                } else {
+                    $balloon.removeClass("green").addClass("red");
+                }
+            }
+
+            // Ação de Clique (Aumentar)
+            $balloon.on("click", function() {
+                nextColor();
+                // .width() no jQuery retorna o valor numérico puro
+                let newSize = $balloon.width() + 10;
+
+                if (newSize > 420) {
+                    $balloon.css({ width: "200px", height: "200px" });
+                } else {
+                    $balloon.css({ width: newSize + "px", height: newSize + "px" });
+                }
+            });
+
+            // Ação de Saída do Mouse (Diminuir)
+            $balloon.on("mouseleave", function() {
+                prevColor();
+                let newSize = Math.max(200, $balloon.width() - 5);
+                $balloon.css({ width: newSize + "px", height: newSize + "px" });
+            });
+        });
+    </script>
+</body>
+</html>

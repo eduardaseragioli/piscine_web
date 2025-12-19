@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Piscina Web</title>
+
+        <style>
+            body{
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: Arial, Helvetica, sans-serif ;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <form id="calcForm">
+            <input type = "text" id = "left" placeholder="left value">
+
+            <select id = "operator">
+                <option value = "+">+</option>
+                <option value = "-">-</option>
+                <option value = "/">/</option>
+                <option value = "*">*</option>
+                <option value = "%">%</option>
+            </select>
+
+            <input type = "text" id = "right" placeholder="right value">
+
+            <input type="submit" value="Try me!">
+        </form>
+
+        <script>
+            const form = document.getElementById("calcForm");
+            const leftInput = document.getElementById("left");
+            const rightInput = document.getElementById("right");
+            const operator = document.getElementById("operator");
+
+            setInterval(function(){
+                alert("Please, use me!");
+            }, 30000);
+
+            form.addEventListener("submit", function(event){
+                event.preventDefault();
+
+                const left = leftInput.value;
+                const right = rightInput.value;
+                const op = operator.value;
+
+                /*verifica se são inteiros positivos*/
+                if (!isPositiveInteger(left) || !isPositiveInteger(right)){
+                    alert("Error :(");
+                    return;
+                }
+
+                const a = Number(left);
+                const b = Number(right);
+
+                /*Divisão ou módulo por 0 */
+                if ((op === "/" || op === "%") && b == 0){
+                    alert("It's over 9000!");
+                    console.log("It's over 9000!");
+                    return;
+                }
+
+                let result;
+
+                /*Cálculo*/
+                switch(op){
+                    case "+":
+                        result = a + b;
+                        break;
+                    case "-":
+                        result = a - b;
+                        break;
+                    case "* ":
+                        result = a * b;
+                        break;
+                    case "/":
+                        result = a / b;
+                        break;
+                    case "%":
+                        result = a % b;
+                        break;
+                }
+
+                alert(result);
+                console.log(result);
+            });
+
+            /*funcao auxiliar*/
+            function isPositiveInteger(value){
+                return /^\d+$/.test(value);
+            }
+        </script>
+
+    </body>
+</html>
